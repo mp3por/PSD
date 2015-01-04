@@ -1,5 +1,8 @@
+package main;
 import java.io.File;
 import java.io.IOException;
+
+import exceptions.InvalidTagException;
 
 /**
  * This is the class that will read the file and pass it to the Parser
@@ -11,7 +14,12 @@ public class PropertiesReader {
 
 		String filename = getFileName(args);
 
-		Parser parser = new Parser(filename);
+		try {
+			Parser parser = new Parser(filename);
+		} catch (InvalidTagException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private static String getFileName(String[] args) {
