@@ -4,7 +4,7 @@ import main.CrackerProperties;
 
 public class TagFactory {
 	
-	private static CrackerProperties crackerProps;
+	private CrackerProperties crackerProps;
 	private static TagFactory factory;
 	
 	private TagFactory(CrackerProperties crackerProps) {
@@ -22,7 +22,7 @@ public class TagFactory {
 		this.crackerProps = props;
 	}
 	
-	public static TagInterface getTagObject(String tag, String value){
+	public TagInterface getTagObject(String tag, String value){
 		
 		if(tag.equals("files")){
 			return new FileAdder(crackerProps,value);
