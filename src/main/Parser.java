@@ -11,6 +11,7 @@ import java.util.Set;
 
 import tags.TagFactory;
 import exceptions.InvalidTagException;
+import exceptions.ProccessingTagException;
 
 /**
  * This object will be responsible to parse the properties file and follow the
@@ -25,14 +26,13 @@ public class Parser {
 
 	Set<String> tags = Collections.unmodifiableSet(new HashSet<String>(Arrays.asList(tagArray)));
 
-	public Parser(String propertyFileName) throws InvalidTagException {
+	public Parser(String propertyFileName) {
 		crackerProperties = new CrackerProperties();
 		tagFactory = TagFactory.getInstance(crackerProperties);
 		props = new Properties();
 
 		try {
 			props.load(new FileInputStream(propertyFileName));
-			//parse(props);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.out.println("FILE DOES NOT EXIST! EXIT!");
@@ -47,7 +47,6 @@ public class Parser {
 	}
 
 	private void parse(Properties props) throws InvalidTagException {
-
 		//main loop over the tags
 		for (Map.Entry<?, ?> e : props.entrySet()) {
 			String tag = (String) e.getKey();
@@ -56,7 +55,12 @@ public class Parser {
 				//throw new InvalidTagException(tag);
 				System.out.println(tag);
 			} else {
-				tagFactory.getTagObject(tag, value).processTagValue();
+				try {
+					tagFactory.getTagObject(tag, value).processTagValue();
+				} catch (ProccessingTagException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		}
 	}

@@ -1,4 +1,5 @@
 package main;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -10,12 +11,13 @@ import exceptions.InvalidTagException;
 public class PropertiesReader {
 	private static final String DEFAULT_PROPERTIES_FILE_NAME = "properties.prop";
 
+	//TODO: trqbva da go napravq da vru6ta CrackerProperties i da ima druga ob6ta main programa 
 	public static void main(String[] args) {
 
 		String filename = getFileName(args);
-
+		Parser parser = new Parser(filename);
 		try {
-			Parser parser = new Parser(filename);
+			parser.parse();
 		} catch (InvalidTagException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,5 +1,6 @@
 package tags;
 
+import exceptions.ProccessingTagException;
 import main.CrackerProperties;
 
 /**
@@ -16,7 +17,7 @@ public class FileAdder implements TagInterface {
 	}
 
 	@Override
-	public boolean processTagValue() {
+	public boolean processTagValue() throws ProccessingTagException {
 		System.out.println("FileAdder tag");
 		return false;
 	}
