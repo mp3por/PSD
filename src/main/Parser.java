@@ -1,4 +1,5 @@
 package main;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -41,12 +42,13 @@ public class Parser {
 		}
 	}
 
-	public CrackerProperties parse() throws InvalidTagException {
+	public CrackerProperties parse() throws InvalidTagException, ProccessingTagException {
 		this.parse(props);
 		return crackerProperties;
 	}
 
-	private void parse(Properties props) throws InvalidTagException {
+	//TODO: mahni system.out 
+	private void parse(Properties props) throws InvalidTagException, ProccessingTagException {
 		//main loop over the tags
 		for (Map.Entry<?, ?> e : props.entrySet()) {
 			String tag = (String) e.getKey();
@@ -55,20 +57,11 @@ public class Parser {
 				//throw new InvalidTagException(tag);
 				System.out.println(tag);
 			} else {
-				try {
-					tagFactory.getTagObject(tag, value).processTagValue();
-				} catch (ProccessingTagException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				tagFactory.getTagObject(tag, value).processTagValue();
 			}
 		}
 	}
 
-	private void setTag(String tag, String value) {
-		if (tag.equals("files")) {
-			/*FileAdder t = new FileAdder(value, crackerProperties);
-			t.proccessTagValue();*/
-		}
+	public void getProperties() {
 	}
 }
