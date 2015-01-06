@@ -16,4 +16,10 @@ public class CrackerProperties {
 		this.files = files;
 	}
 	
+	
+	//TODO: Implement to return an immutable version of this object
+	public void getImmutableObject(){
+		
+	}
+	
 }

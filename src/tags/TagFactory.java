@@ -25,7 +25,7 @@ public class TagFactory {
 	public TagInterface getTagObject(String tag, String value){
 		
 		if(tag.equals("files")){
-			return new FileAdder(crackerProps,value);
+			return new FileAdderTag(crackerProps,value);
 		}
 		
 		return null;

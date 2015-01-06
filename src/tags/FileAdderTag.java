@@ -11,11 +11,11 @@ import exceptions.ProccessingTagException;
 /**
  * This will add the files to the Properties
  * */
-public class FileAdder implements TagInterface{
+public class FileAdderTag implements TagInterface{
 	private CrackerProperties crackerProps;
 	private String value;
 
-	public FileAdder(CrackerProperties crackerProps, String value) {
+	public FileAdderTag(CrackerProperties crackerProps, String value) {
 		this.crackerProps = crackerProps;
 		this.value = value;
 	}
